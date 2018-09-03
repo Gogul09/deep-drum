@@ -1,0 +1,401 @@
+// mobile media query
+@mixin mobile {
+  @media screen and (max-width: 640px) {
+    @content;
+  }
+}
+
+// tablet media query
+@mixin tablet {
+  @media (min-width: 768px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+// fonts
+$font_header : 'Nunito', sans-serif;
+$font_body   : 'Nunito', sans-serif;
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: $font_body;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+}
+
+img {
+	max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+select {
+	padding: 5px;
+    font-family: Nunito;
+    border-radius: 5px;
+}
+
+label {
+	margin: 0.7em 0;
+}
+
+.deepdrum-container {
+	width: 100%;
+	height: 100vh;
+	background-color: #01d0ff;
+	background-image: linear-gradient(223deg, #01d0ff 0%, #fd23c2 100%);
+	overflow-x: hidden;	
+}
+
+.deepdrum-wrapper {
+	width: 100%;
+	height: 100%;
+	background-color: #01d0ff;
+	background-image: linear-gradient(223deg, #01d0ff 0%, #fd23c2 100%);
+}
+
+.deepdrum-header {
+	width: 100%;
+	text-align: center;
+	padding: 0px 20px;
+	h3 {
+		font-family: "Pacifico", cursive;
+	    font-size: 30px;
+	    color: white;
+	    margin: 0px;
+	    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+	    padding: 10px 25px 0px 25px;
+	    @include mobile {
+	    	font-size: 25px;
+	    	padding: 10px 25px 0px 25px;
+	    }
+	}
+	p {
+		margin-top: 1rem !important;
+		margin-bottom: 1rem !important;
+		color: white;
+		font-size: 13px;
+		text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+		font-family: monospace;
+		@include mobile {
+			font-size: 10px;
+		}
+		a {
+			background-color: #fff051;
+		    color: black !important;
+		    text-shadow: none;
+		    padding: 2px 5px;
+		    border-radius: 5px;
+		    font-weight: bold;
+		}
+		a:hover {
+			text-decoration: none;
+			background-color: #47f5a3;
+		}
+	}
+}
+
+.deepdrum-flex {
+	display: flex;
+	height: 80%;
+	padding: 0 30px;
+	@include mobile {
+		padding: 0px;
+	}
+}
+
+.deepdrum-flex-items {
+	background-color: rgba(0, 0, 0, 0.9);
+    margin: 0 20px;
+    height: 95%;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 20px;
+    @include mobile {
+    	padding: 5px;
+    }
+}
+
+.deepdrum-control-box {
+	padding: 20px;
+	@include mobile {
+		padding: 5px;
+	}
+	p {
+		color: white;
+		font-size: 15px;
+		margin: 0px !important;
+		font-family: "Muli";
+		@include mobile {
+			font-size: 10px;
+		}
+	}
+	input[type="range"] {
+		color: white;
+	}
+	.range-field {
+		font-family: $font_body !important;
+	}
+}
+
+.deepdrum-playback {
+	display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    margin: 0px auto;
+    @include mobile {
+    	width: 95%;
+    	padding: 20px 10px;
+    }
+}
+
+.deepdrum-step-sequencer {
+	flex: 1;
+	width: 100%;
+	padding: 10px;
+	height: 100%;
+	@include mobile {
+		padding: 0px;
+	}
+}
+
+.deepdrum-playback-control {
+	background-color: transparent;
+	flex: 0.2;
+	text-align: center;
+	padding: 10px;
+	margin: 0px auto;
+	width: 80%;
+	border-radius: 20px;
+	@include mobile {
+		padding: 0px;
+		width: 100%;
+	}
+}
+
+.deepdrum-playback-controller {
+	display: flex;
+	justify-content: center;
+}
+
+.deepdrum-step-wrapper {
+	flex: 1;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+    height: 17%;
+}
+
+.deepdrum-step-box {
+	height: 60%;
+}
+
+.deepdrum-step-boxes-off {
+	flex: 1;
+    background-color: #242424ad;
+    border-radius: 2px;
+    border: none;
+    margin: 2px;
+    height: auto;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.deepdrum-step-boxes-on {
+	flex: 1;
+	background-color: #ec2e5a;
+    border-radius: 2px;
+    border: none;
+    margin: 2px;
+    height: auto;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.deepdrum-step-boxes-image {
+	flex: 1;
+	background-color: transparent;
+    border-radius: 2px;
+    border: none;
+    margin: 2px;
+    height: auto;
+    cursor: pointer;
+}
+
+.deepdrum-step-boxes-off:focus {
+	outline: none;
+}
+
+.deepdrum-step-boxes-on:focus {
+	outline: none;
+}
+
+.deepdrum-step-boxes-off:hover {
+	background-color: lightgray;
+}
+
+.deepdrum-play {
+	height: 80px;
+	width: 80px;
+	border-radius: 50%;
+	background-color: #64e0e5;
+	border: 4px solid #5fb5b8;
+	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+	background-image: url("../images/play.png");
+	background-repeat: no-repeat;
+	background-size: 25px;
+	background-position: center;
+	cursor: pointer;
+    margin: 0 10px;
+}
+
+.deepdrum-play:hover {
+	box-shadow: 0 3px 3px -2px rgba(0,0,0,.2), 0 3px 14px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+	transform: scale(1.2);
+}
+
+.deepdrum-play:focus {
+	outline: none;
+}
+
+.deepdrum-regenerate {
+	height: 80px;
+	width: 80px;
+	border-radius: 50%;
+	background-color: #ec3434;
+    border: 4px solid #d41c1c;
+	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+	background-image: url("../images/regenerate.png");
+	background-repeat: no-repeat;
+	background-size: 25px;
+	background-position: center;
+	cursor: pointer;
+	margin: 0 10px;
+}
+
+.deepdrum-regenerate:hover {
+	box-shadow: 0 3px 3px -2px rgba(0,0,0,.2), 0 3px 14px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+	transform: scale(1.2);
+}
+
+.deepdrum-regenerate:focus {
+	outline: none;
+	background-color: #ec3434 !important;
+}
+
+.deepdrum-instrument-container {
+	display: inline-block;
+    width: 100%;
+    height: 100%;
+    @include mobile {
+    	height: auto;
+		overflow-x: scroll;
+	}
+}
+
+.deepdrum-indicator {
+	background-color: #9f64d9;
+}
+
+.deepdrum-kick {
+	background-color: #bc1a1a;
+}
+
+.deepdrum-snare {
+	background-color: #1d6b96;
+}
+
+.deepdrum-hihat-closed {
+	background-color: #ff7f27;
+}
+
+.deepdrum-hihat-open {
+	background-color: #229a32;
+}
+
+.deepdrum-tom-low {
+	background-color: #e43f91;
+}
+
+.deepdrum-tom-mid {
+	background-color: #e43f91;
+}
+
+.deepdrum-tom-high {
+	background-color: #e43f91;
+}
+
+.deepdrum-clap {
+	background-color: #cb5bff;
+}
+
+.deepdrum-ride {
+	background-color: #fcc827;
+}
+
+.deepdrum-instrument-image {
+	background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+    background-color: transparent;
+    @include mobile {
+    	padding: 10px;
+    }
+}
+
+.deepdrum-instrument-image:focus {
+	outline: none;
+}
+
+@keyframes bounce {
+   0%, 20%, 50%, 80%, 100% {transform: translateY(0); -webkit-transform: translateX(0);}
+   30% {transform: translateY(-50px); -webkit-transform: translateX(-40px);} 
+   50% {transform: translateY(-20px); -webkit-transform: translateX(-20px);} 
+}
+
+@-webkit-keyframes bounce { 
+	0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0); -webkit-transform: translateX(0);} 
+	30% {-webkit-transform: translateY(-50px); -webkit-transform: translateX(-40px);} 
+	50% {-webkit-transform: translateY(-20px); -webkit-transform: translateX(-20px);} 
+}
+
+.bounce { 
+    -webkit-animation-name: bounce; 
+    animation-name: bounce; 
+    -webkit-animation-duration: 0.1s;
+    animation-duration: 0.1s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+ }
+
+.deepdrum-content {
+	width: 60%;
+    padding: 20px;
+    margin: 0px auto;
+    @include mobile {
+    	width: 95%;
+    }
+    @include tablet {
+    	width: 90%;
+    }
+    ul, li {
+    	list-style-type: circle !important;
+    }
+}
+
+.deepdrum-seed-indicator {
+	background-color: #a280b542;
+}
+
+.deepdrum-share {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 1;
+}
