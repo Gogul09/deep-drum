@@ -1,10 +1,40 @@
 var instruments = ["drum"];
 
+var playerLengthElement = document.getElementById("player-length");
+var playerLength = parseInt(playerLengthElement.value);
+document.getElementById("text-player-length").innerHTML = "Length<br><span>" + playerLength + "</span>";
+
 var instruments_map = {
-	drum  : [9, 32]
+	drum  : [9, playerLength]
 };
 
-var master_cols = 32;
+var master_cols = playerLength;
+
+//---------------------------
+// update player length
+//---------------------------
+function updatePlayerLength() {
+	var playerLengthElement = document.getElementById("player-length");
+	playerLength = parseInt(playerLengthElement.value);
+	document.getElementById("text-player-length").innerHTML = "Length<br><span>" + playerLength + "</span>";
+
+	var container = document.getElementById("deepdrum-drum-container");
+	container.innerHTML = "";
+
+	instruments_map = {
+		drum  : [9, playerLength]
+	};
+
+	master_cols = playerLength;
+
+	var seedElement = document.getElementById("seed");
+	seedElement.max = playerLength;
+
+	generate_step_boxes();
+	enableMasterPattern();
+	updateSeed();
+	updateSeedPattern();
+}
 
 var ts_num = 4;
 var ts_den = 4;
@@ -400,26 +430,27 @@ function scheduleTimeOff() {
 
 // tempo 
 var tempo = document.getElementById("tempo").value;
-document.getElementById("text-tempo").innerHTML = "Tempo - " + tempo; 
+document.getElementById("text-tempo").innerHTML = "Tempo<br><span>" + tempo + "</span>" 
 
 function updateTempo(tempo) {
 	Tone.Transport.bpm.value = tempo;
-	document.getElementById("text-tempo").innerHTML = "Tempo - " + tempo; 
+	document.getElementById("text-tempo").innerHTML = "Tempo<br><span>" + tempo + "</span>"
 }
 
 // temperature 
 var t = document.getElementById("temperature").value;
 temperature = parseFloat(t);
-document.getElementById("text-temperature").innerHTML = "Temperature - " + t; 
+document.getElementById("text-temperature").innerHTML = "Temperature<br><span>" + t + "</span>" 
 
 function updateTemperature(t) {
-	document.getElementById("text-temperature").innerHTML = "Temperature - " + t; 
+	document.getElementById("text-temperature").innerHTML = "Temperature<br><span>" + t + "</span>"
 	temperature = parseFloat(temperature);
 }
 
 function updateSeed() {
 	var seedElement = document.getElementById("seed");
 	seed = parseInt(seedElement.value);
+	document.getElementById("text-seed").innerHTML = "Seed<br><span>" + seed + "</span>";
 	play_length = master_cols - seed;
 	updateSeedDisplay();
 }

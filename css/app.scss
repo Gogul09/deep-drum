@@ -47,13 +47,12 @@ label {
 	width: 100%;
 	height: 100vh;
 	background-color: #01d0ff;
-	background-image: linear-gradient(223deg, #01d0ff 0%, #fd23c2 100%);
-	overflow-x: hidden;	
+	background-image: linear-gradient(223deg, #01d0ff 0%, #fd23c2 100%);	
 }
 
 .deepdrum-wrapper {
 	width: 100%;
-	height: 100%;
+	padding: 10px 0px;
 	background-color: #01d0ff;
 	background-image: linear-gradient(223deg, #01d0ff 0%, #fd23c2 100%);
 }
@@ -64,11 +63,11 @@ label {
 	padding: 0px 20px;
 	h3 {
 		font-family: "Pacifico", cursive;
-	    font-size: 30px;
+	    font-size: 40px;
 	    color: white;
 	    margin: 0px;
-	    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-	    padding: 10px 25px 0px 25px;
+	    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+	    padding: 10px 25px;
 	    @include mobile {
 	    	font-size: 25px;
 	    	padding: 10px 25px 0px 25px;
@@ -79,10 +78,9 @@ label {
 		margin-bottom: 1rem !important;
 		color: white;
 		font-size: 13px;
-		text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 		font-family: monospace;
 		@include mobile {
-			font-size: 10px;
+			font-size: 8px;
 		}
 		a {
 			background-color: #fff051;
@@ -101,7 +99,7 @@ label {
 
 .deepdrum-flex {
 	display: flex;
-	height: 80%;
+	height: auto;
 	padding: 0 30px;
 	@include mobile {
 		padding: 0px;
@@ -120,7 +118,13 @@ label {
     }
 }
 
+.deepdrum-buttons-controller {
+	display: inline-block;
+	text-align: center;
+}
+
 .deepdrum-control-box {
+	flex: 1;
 	padding: 20px;
 	@include mobile {
 		padding: 5px;
@@ -131,7 +135,7 @@ label {
 		margin: 0px !important;
 		font-family: "Muli";
 		@include mobile {
-			font-size: 10px;
+			font-size: 9px;
 		}
 	}
 	input[type="range"] {
@@ -184,16 +188,10 @@ label {
 }
 
 .deepdrum-step-wrapper {
-	flex: 1;
     flex-wrap: nowrap;
     justify-content: space-between;
     width: 100%;
     display: flex;
-    height: 17%;
-}
-
-.deepdrum-step-box {
-	height: 60%;
 }
 
 .deepdrum-step-boxes-off {
@@ -202,7 +200,7 @@ label {
     border-radius: 2px;
     border: none;
     margin: 2px;
-    height: auto;
+    height: 30px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -213,7 +211,7 @@ label {
     border-radius: 2px;
     border: none;
     margin: 2px;
-    height: auto;
+    height: 30px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -224,7 +222,7 @@ label {
     border-radius: 2px;
     border: none;
     margin: 2px;
-    height: auto;
+    height: 30px;
     cursor: pointer;
 }
 
@@ -237,7 +235,7 @@ label {
 }
 
 .deepdrum-step-boxes-off:hover {
-	background-color: lightgray;
+	background-color: rgba(255,255,255,0.3);
 }
 
 .deepdrum-play {
@@ -304,39 +302,39 @@ label {
 }
 
 .deepdrum-kick {
-	background-color: #bc1a1a;
+	background-color: #f62e2e;
 }
 
 .deepdrum-snare {
-	background-color: #1d6b96;
+	background-color: #4e9cc7;
 }
 
 .deepdrum-hihat-closed {
-	background-color: #ff7f27;
+	background-color: #f87c26;
 }
 
 .deepdrum-hihat-open {
-	background-color: #229a32;
+	background-color: #31973f;
 }
 
 .deepdrum-tom-low {
-	background-color: #e43f91;
+	background-color: #b83f7b;
 }
 
 .deepdrum-tom-mid {
-	background-color: #e43f91;
+	background-color: #b83f7b;
 }
 
 .deepdrum-tom-high {
-	background-color: #e43f91;
+	background-color: #b83f7b;
 }
 
 .deepdrum-clap {
-	background-color: #cb5bff;
+	background-color: #a55bc5;
 }
 
 .deepdrum-ride {
-	background-color: #fcc827;
+	background-color: #f2c742;
 }
 
 .deepdrum-instrument-image {
@@ -398,4 +396,16 @@ label {
 	top: 20px;
 	right: 20px;
 	z-index: 1;
+}
+
+.text-property span {
+	padding: 2px 5px;
+    border-radius: 3px;
+    background-color: #1d1c1e;
+    color: #716f6f;
+    font-family: monospace;
+    font-size: 13px;
+    @include mobile {
+    	font-size: 10px;
+    }
 }
