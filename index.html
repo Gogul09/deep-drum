@@ -14,57 +14,227 @@
 	
 <div class="deepdrum-container">
 	<div class="deepdrum-wrapper">
-		<div class="deepdrum-header">
-			<h3>Deep Drum</h3>
-			<p>created by <a href="https://gogul09.github.io/about" target="_blank">gogul ilango</a> with ❤️ for music & ai </p>
-		</div>
 		<div class="deepdrum-flex">
 			<div class="deepdrum-playback deepdrum-flex-items">
-				<div class="deepdrum-step-sequencer">
-					<div id="deepdrum-drum" class="deepdrum-step-box">
-						<div id="deepdrum-drum-container" class="deepdrum-instrument-container"></div>
+				<div class="deepdrum-kit-selector">
+					<div id="deepdrum-top-controller" class="deepdrum-playback-controller">
+						<div class="deepdrum-modal-settings" id="deepdrum-modal-settings">
+							<div class="deepdrum-modal-settings-holder">
+								<button id="deepdrum-modal-close" class="deepdrum-modal-close" onclick="closeSettings()">X</button>
+								<button id="deepdrum-modal-apply" class="deepdrum-modal-apply" onclick="applySettings()"></button>
+								<div class="deepdrum-modal-settings-wrapper">
+									<div class="deepdrum-modal-settings-container">
+										<h3>grid</h3>
+										<div class="deepdrum-settings-box">
+										    <div class="deepdrum-settings-flex"><span class="text-settings">Length</span><span id="text-slider-bar-length" class="text-settings-value"></span> <span nexus-ui="slider" id="slider-bar-length"></span></div>
+										    <div class="deepdrum-settings-flex"><span class="text-settings">Beats per bar</span><span id="text-slider-beats-per-bar" class="text-settings-value"></span> <span nexus-ui="slider" id="slider-beats-per-bar"></span></div>
+										    <div class="deepdrum-settings-flex"><span class="text-settings">Split beats into</span><span id="text-slider-split-beats-into" class="text-settings-value"></span> <span nexus-ui="slider" id="slider-split-beats-into"></span></div>
+										</div>
+									</div>
+								</div>
+								<div class="deepdrum-modal-settings-wrapper">
+									<div class="deepdrum-modal-settings-container">
+										<h3>drum kit</h3>
+										<div class="deepdrum-settings-box">
+										    <select id="deepdrum-kit" class="deepdrum-select" onchange="updateKit(this.id)">
+										    	<option value="analog">analog</option>
+										    	<option value="electronic">electronic</option>
+										    	<option value="hiphop" selected>hiphop</option>
+										    	<option value="percussion">percussion</option>
+										    </select>
+										</div>
+									</div>
+								</div>
+								<div class="deepdrum-modal-settings-wrapper">
+									<div class="deepdrum-modal-settings-container">
+										<h3>lead</h3>
+										<div class="deepdrum-settings-box">
+										    <select id="deepdrum-select-synth" class="deepdrum-select" onchange="updateSynthLead(this.id)">
+										    	<option value="mono">monosynth</option>
+										    	<option value="poly">polysynth</option>
+										    	<option value="fat">fatsynth</option>
+										    	<option value="piano" selected>piano</option>
+										    	<option value="guitar">guitar</option>
+										    </select>
+										</div>
+									</div>
+								</div>
+								<div class="deepdrum-modal-settings-wrapper">
+									<div class="deepdrum-modal-settings-container">
+										<h3>bass</h3>
+										<div class="deepdrum-settings-box">
+										    <select id="deepdrum-select-synth-bass" class="deepdrum-select" onchange="updateSynthBass(this.id)">
+										    	<option value="mono">monosynth</option>
+										    	<option value="poly">polysynth</option>
+										    	<option value="fat">fatsynth</option>
+										    	<option value="piano" selected>piano</option>
+										    </select>
+										</div>
+									</div>
+								</div>
+								<div class="deepdrum-modal-settings-wrapper">
+									<div class="deepdrum-modal-settings-container">
+										<h3>scale</h3>
+										<div class="deepdrum-settings-box" id="deepdrum-box-select-scale">
+											<select id="deepdrum-select-scale" class="deepdrum-select" onchange="updateScale(this.id)">
+										    	<option value="C">C</option>
+										    	<option value="C#">C#</option>
+										    	<option value="D">D</option>
+										    	<option value="D#">D#</option>
+										    	<option value="E">E</option>
+										    	<option value="F">F</option>
+										    	<option value="F#">F#</option>
+										    	<option value="G">G</option>
+										    	<option value="G#">G#</option>
+										    	<option value="A" selected>A</option>
+										    	<option value="A#">A#</option>
+										    	<option value="B">B</option>
+										    </select>
+										</div>
+										<div class="deepdrum-settings-box" id="deepdrum-box-select-mode">
+											<select id="deepdrum-select-mode" class="deepdrum-select" onchange="updateMode(this.id)">
+										    	<option value="ionian">ionian</option>
+										    	<option value="dorian">dorian</option>
+										    	<option value="phrygian">phrygian</option>
+										    	<option value="lydian">lydian</option>
+										    	<option value="myxolydian">myxolydian</option>
+										    	<option value="aeolian" selected>aeolian</option>
+										    	<option value="locrian">locrian</option>
+										    </select>
+										</div>
+									</div>
+								</div>
+								<div class="deepdrum-modal-settings-wrapper">
+									<div class="deepdrum-modal-settings-container">
+									<h3>tuners (deepdrum)</h3>
+										<div class="deepdrum-playback-control">
+											<div class="deepdrum-playback-controller">
+												<div class="deepdrum-control-box">
+													<span nexus-ui="dial" id="dial-tempo"></span>
+												    <p id="text-tempo" class="text-property">tempo</p>
+												</div>
+												<div class="deepdrum-control-box">
+													<span nexus-ui="dial" id="dial-temperature-drum"></span>
+												    <p id="text-temperature-drum" class="text-property">temperature</p>
+												</div>
+												<div class="deepdrum-control-box">
+													<span nexus-ui="dial" id="dial-seed"></span>
+												    <p id="text-seed" class="text-property">seed</p>
+												</div>
+												<div class="deepdrum-control-box">
+													<span nexus-ui="dial" id="dial-swing"></span>
+												    <p id="text-swing" class="text-property">swing</p>
+												</div>
+												<div class="deepdrum-control-box">
+													<span nexus-ui="dial" id="dial-swing-sub"></span>
+												    <p id="text-swing-sub" class="text-property">swing sub</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="deepdrum-modal-settings-wrapper">
+									<div class="deepdrum-modal-settings-container">
+									<h3>tuners (deeparp)</h3>
+										<div class="deepdrum-playback-control">
+											<div class="deepdrum-playback-controller">
+												<div class="deepdrum-control-box">
+													<span nexus-ui="dial" id="dial-temperature-arp"></span>
+												    <p id="text-temperature-arp" class="text-property">temperature</p>
+												</div>
+												<div class="deepdrum-control-box hide-box" id="box-dial-arp-length">
+													<span nexus-ui="dial" id="dial-arp-length"></span>
+												    <p id="text-arp-length" class="text-property">arp length</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="deepdrum-top-control-box">
+							<img src="images/avengers.png" class="avengers-logo" />
+						</div>
+						<div class="deepdrum-top-control-box">
+							<span nexus-ui="toggle" id="toggle-midi"></span>
+							<span class="text-description">midi</span>	
+						</div>
+						<div class="deepdrum-top-control-box">
+							<span nexus-ui="radiobutton" id="radio-melody" style="margin-bottom: 5px !important;"></span>
+							<span class="text-description" id="text-melody">piano</span>	
+						</div>
+						<div class="deepdrum-top-control-box">
+							<span nexus-ui="toggle" id="toggle-play-mode"></span>
+							<span class="text-description" id="text-play-mode">song</span>	
+						</div>
+						<div class="deepdrum-top-control-box">
+							<button id="deepdrum-settings" class="deepdrum-settings" onclick="showSettings(this.id)"></button>
+							<span class="text-description">settings</span>	
+						</div>
 					</div>
 				</div>
-				<div class="deepdrum-step-sequencer deepdrum-playback-control">
-					<div class="deepdrum-playback-controller">
-						<div class="deepdrum-control-box">
-							<p class="range-field">
-						      <input type="range" id="tempo" min="50" max="200" value="120" onchange="updateTempo(this.value)">
-						    </p>
-						    <p id="text-tempo" class="text-property">Tempo</p>
-						</div>
-						<div class="deepdrum-control-box">
-							<p class="range-field">
-						      <input type="range" id="temperature" min="0.5" max="5.0" step="0.1" value="1.0" onchange="updateTemperature(this.value)">
-						    </p>
-						    <p id="text-temperature" class="text-property">Temperature</p>
-						</div>
-						<div class="deepdrum-control-box">
-						    <p class="range-field">
-						      <input type="range" id="seed" min="1" max="32" step="1" value="4" onchange="updateSeed()">
-						    </p>
-						    <p id="text-seed" class="text-property">Seed</p>
-						</div>
-						<div class="deepdrum-control-box">
-						    <p class="range-field">
-						      <input type="range" id="player-length" min="8" max="64" step="8" value="32" onchange="updatePlayerLength()">
-						    </p>
-						    <p id="text-player-length" class="text-property">Length</p>
-						</div>
-						</div>
+				<div class="hide-box deepdrum-pattern-tag" id="deepdrum-pattern-tag">
+					<div id="deepdrum-tag-holder" class="deepdrum-tag-holder">
+						<p class="deepdrum-tag-text">patterns</p>
+						<button id="btn-tag-a" class="btns-tag" onclick="enableTag(this.id)">A</button>
+						<button id="btn-tag-plus" class="btns-tag-plus" onclick="addTag(this.id)">+</button>
 					</div>
-					<div class="deepdrum-step-sequencer deepdrum-buttons-controller">
-						<button id="deepdrum-regenerate" class="deepdrum-regenerate" onclick="predictSequence(this.id)" title="Regenerate!"></button>
-						<button id="deepdrum-play" class="deepdrum-play" onclick="playdeepdrum(this.id)" title="Play!"></button>
+				</div>
+				<div class="deepdrum-step-sequencer">
+					<div id="deepdrum-drum-container" class="deepdrum-instrument-container">
 					</div>
+				</div>
+				<div class="deepdrum-playback-control deepdrum-arp-box-wrapper" id="deepdrum-arp-box-wrapper">
+					<div class="hide-box deepdrum-piano-box" id="deepdrum-piano-box">
+						<div class="deepdrum-piano" id="deepdrum-piano"></div>
+					</div>
+					<div class="hide-box deepdrum-arp-box" id="deepdrum-arp-box"></div>
+					<div class="hide-box deepdrum-gpad-box" id="deepdrum-gpad-box"></div>
+				</div>
+				<div class="deepdrum-timeline-container animated" id="deepdrum-timeline-container">
+					<div class="deepdrum-timeline" id="deepdrum-timeline">
+						<div id="deepdrum-timeline-indicator" class="deepdrum-timeline-indicator"></div>
+						<button id="deepdrum-timeline-add" class="deepdrum-timeline-add animated jello infinite" onclick="addPatternInTimeline(this.id)"></button>
+						<button id="deepdrum-timeline-clear" class="deepdrum-timeline-clear" onclick="clearPatternInTimeline()"></button>
+					</div>
+				</div>
+				<div class="deepdrum-buttons-controller">
+					<button id="deepdrum-regenerate" class="deepdrum-regenerate" onclick="predictSequence(this.id)" title="Regenerate!"></button>
+					<button id="deepdrum-play" class="deepdrum-play" onclick="playDeepDrum(this.id)" title="Play!"></button>
+					<button id="deepdrum-record" class="deepdrum-record" onclick="downloadPattern(this.id)" title="Record!"></button>
+				</div>
+				<p class='deepdrum-beta'>beta</p>
 				</div>
 			</div>
 		</div>
+		<div id="deepdrum-snackbar" class="deepdrum-snackbar"></div>
 	</div>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@magenta/music@1.4.2/dist/magentamusic.min.js"></script>
+	<script type="text/javascript" src="js/nexus.js"></script>
 	<script type="text/javascript" src="js/tone.js"></script>
-	<script type="text/javascript" src="externals/js/materialize.min.js"></script>
-	<script type="text/javascript" src="js/mapping.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
+
+	<script type="text/javascript" src="js/tonal.js"></script>
+	<script type="text/javascript" src="js/chord_finder.js"></script>
+	<script type="text/javascript" src="js/reverse_midi_map.js"></script>
+	<script type="text/javascript" src="js/update_controls.js"></script>
+	<script type="text/javascript" src="js/arp_and_bass.js"></script>
+	<script type="text/javascript" src="js/multiple_tag.js"></script>
+	<script type="text/javascript" src="js/timeline.js"></script>
+	<script type="text/javascript" src="js/gpad.js"></script>
+	<script type="text/javascript" src="js/deepdrum.js"></script>
+
+	<script type="text/javascript">
+		setTimeout(function(){ 
+			// dummy start note to load buffer
+			//temp_vol = lead_synth.volume.value;
+			//lead_synth.volume.value = -200;
+			lead_synth.triggerAttackRelease('C3', '8n');
+			lead_synth.triggerAttackRelease('E3', '8n');
+			lead_synth.triggerAttackRelease('G3', '8n');
+			lead_synth.triggerAttackRelease('C3', '8n');
+			lead_synth.triggerAttackRelease('E3', '8n');
+			//lead_synth.volume.value = temp_vol;
+		}, 7000);
 </body>
 </html>
